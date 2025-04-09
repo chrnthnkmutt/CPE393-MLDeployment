@@ -1,5 +1,8 @@
 # mldeployment-cpe393
 
+Created By Charunthon Limseelo (65070503410).
+Advisior: Prof. Aye Hninn Khine (The Course Instructor of CPE393 Special Topics III: Machine Learning Operations)
+
 ## Project Description
 
 This project demonstrates the deployment of a machine learning model using Flask and Docker. The model is trained to predict housing prices based on various features. The API provides endpoints for making predictions, checking the health of the service, and more.
