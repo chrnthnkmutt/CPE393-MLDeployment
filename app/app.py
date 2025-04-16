@@ -5,7 +5,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the trained model
-with open("app/model.pkl", "rb") as f:
+with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
 @app.route("/")
@@ -16,11 +16,9 @@ def home():
 def health():
     return jsonify({"status": "ok"})
 
-
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
-
     if "features" not in data:
         return jsonify({"error": "'features' key is missing"}), 400
     
@@ -34,7 +32,6 @@ def predict():
         
     input_features = np.array(data["features"])
     prediction = model.predict(input_features)
-
     confident_score = model.predict_proba(input_features)
     confidence = [confident_score[i][prediction[i]] for i in range(len(prediction))]
 
@@ -43,7 +40,7 @@ def predict():
         "confidences": confidence
     })
 
-with open("app/linear_model.pkl", "rb") as f:
+with open("linear_model.pkl", "rb") as f:
     linear_model = pickle.load(f)
 
 @app.route("/predict_price", methods=["POST"])
@@ -57,4 +54,4 @@ def predict_price():
         return jsonify({"error": str(e)}), 400
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9000) #check your port number ( if it is in use, change the port number)
+    app.run(host="0.0.0.0", port=9000) # Check your port number (if it is in use, change the port number)

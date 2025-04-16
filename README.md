@@ -27,18 +27,20 @@ This project demonstrates the deployment of a machine learning model using Flask
 
 #### Request
 ```sh
-curl -X POST http://localhost:9000/predict_price \
-     -H "Content-Type: application/json" \
-     -d '{"features": [[5.1, 3.5, 1.4, 0.2], [6.2, 3.4, 5.4, 2.3]]}'
+curl -X POST http://localhost:9000/predict \
+   -H "Content-Type: application/json" \
+   -d '{ "features": [ [5.1, 3.5, 1.4, 0.2], [6.2, 3.4, 5.4, 2.3] ] }'
 ```
 
-#### Response
+#### Example Response
 ```json
 {
-  "predictions": [0, 2],
-  "confidences": [0.97, 0.85]
+  "confidences":[1.0,1.0],
+  "predictions":[0,2]
 }
 ```
+
+> Note: Confidences and Predictions values are swapped in the response. The first value in the `predictions` array corresponds to the first value in the `confidences` array, and so on.
 
 ### Health Check Endpoint
 
