@@ -10,11 +10,8 @@ This project demonstrates the deployment of a machine learning model using Flask
 
 ## Setup Steps
 
-1. Train the model by running `train.py`. This will save `housing_model.pkl` in the `app` folder.
+1. Train the model by running `train.py`. This will save `linear_model.pkl` in the `app` folder.
 2. Navigate to the project directory in the terminal:
-   ```sh
-   cd ml-docker-deploy
-   ```
 3. Build the Docker image:
    ```sh
    docker build -t ml-model .
@@ -30,7 +27,7 @@ This project demonstrates the deployment of a machine learning model using Flask
 
 #### Request
 ```sh
-curl -X POST http://localhost:9000/predict \
+curl -X POST http://localhost:9000/predict_price \
      -H "Content-Type: application/json" \
      -d '{"features": [[5.1, 3.5, 1.4, 0.2], [6.2, 3.4, 5.4, 2.3]]}'
 ```
